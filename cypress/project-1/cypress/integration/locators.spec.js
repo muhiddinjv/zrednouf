@@ -22,6 +22,23 @@ describe('Locators', () => {
         cy.get("[class='Elements-btn btn-with-class more-btn-classes']")
 
         // get all elements by id
-        cy.get("[id='btn-with-id']")
+        cy.get("#btn-with-id")
+
+        // get all elements by attribute
+        cy.get("[type='submit']")
+
+        // get all elements by tag name & class
+        cy.get(" button.Elements-btn")
+
+        // get all elements by tag name & class & id
+        cy.get("button.Elements-btn#btn-with-id")
+
+        // get all elements by tag name & class & type
+        cy.get("button.Elements-btn[type='submit']")
+
+        // BEST way to GET an element
+        // Get all elements by specific data test id
+        cy.get("[data-cy='btn-id-1']")
+        cy.getByTestId("btn-id-1")
     })
  })
