@@ -39,6 +39,26 @@ describe('Locators', () => {
         // BEST way to GET an element
         // Get all elements by specific data test id
         cy.get("[data-cy='btn-id-1']")
-        cy.getByTestId("btn-id-1")
+        cy.getByTestId("btn-id-1") //short n sweet
+    })
+
+    it("locating elements with contains",()=>{
+        // get one element by text
+        cy.contains('Unique Text')
+
+        // get the first one of duplicates
+        cy.contains('Not Unique Text') 
+
+        // with Selector
+        cy.contains("[type='submit']","Not Unique Text")
+        cy.contains("form","Not Unique Text")
+        
+        // this does the same as above code
+        cy.get("[type='submit']").contains("Not Unique Text")
+    })
+
+    it("locating elements with Find",()=>{
+        cy.get("#form-1").find(".btn-1")
+        cy.get("#form-1").find(".btn-2")
     })
  })
