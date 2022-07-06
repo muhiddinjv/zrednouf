@@ -19,8 +19,18 @@ describe("Accomplishments Dashboard",()=>{
         cy.contains("Submit Accomplishment").click();
         cy.get(".Accomplishment-spinner-container").should("be.visible")
         cy.contains("This Accomplisment was Successfully Submitted").should("be.visible")
-        
+    })
 
+    it("should return to accomplishments dashboard onClick GO BACK",()=>{
+        cy.get("[data-cy='accomplishment-title-input']").type("My basketball accomplishment")
+        cy.get("[data-cy='accomplishment-input']").type("I made the hoop 10x in a row, dude!")
+        cy.get("[type='checkbox']").click();
+        cy.contains("Submit Accomplishment").click();
+        cy.contains("This Accomplisment was Successfully Submitted").should("be.visible");
+        cy.contains("Go Back").click();
+        cy.get("[data-cy='accomplishment-title-input']").should("be.empty")
+        cy.get("[data-cy='accomplishment-input']").should("have.value","")
+        cy.get("[type='checkbox']").should("not.be.checked");
     })
 })
 
